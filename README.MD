@@ -3,7 +3,7 @@
 ### Setup:
 ##### Pre-requisite: Free Twiolio WhatsApp Sandbox set up 
 1. clone this repository
-2. setup venv, pip install requirements.txt
+2. setup venv `python3 -m venv venv`, `source venv/bin/activate`, `pip install -r requirements.txt`
 3. Ngrok (for local web hook receiving)
 4. SQLite db setup:
 `sqlite3 interactions.db`
@@ -33,6 +33,7 @@ Send a WhatsApp message to your Twilio sandbox number
 Check the resulting database using the api: 
 
 `curl --location --request GET '127.0.0.1:5000/get_messages'`
+
 
 #### Check the deployed api: 
 `curl --location --request GET 'chatbot.devsoft.co.za/get_messages'` *still todo
