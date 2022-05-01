@@ -1,7 +1,7 @@
-#Smart Wage WhatsApp Questions 
+# Smart Wage WhatsApp Questions 
 
-###Setup:
-#####Pre-requisite: Free Twiolio WhatsApp Sandbox set up 
+### Setup:
+##### Pre-requisite: Free Twiolio WhatsApp Sandbox set up 
 1. clone this repository
 2. setup venv, pip install requirements.txt
 3. Ngrok (for local web hook receiving)
