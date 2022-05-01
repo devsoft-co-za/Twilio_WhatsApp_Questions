@@ -20,3 +20,4 @@ twilio==7.8.2
 urllib3==1.26.9
 Werkzeug==2.1.2
 zipp==3.8.0
+uwsgi
