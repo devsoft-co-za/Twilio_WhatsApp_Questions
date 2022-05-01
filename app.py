@@ -2,7 +2,7 @@ from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 
 import sqlalchemy as db
-# from sqlalchemy import insert
+# from sqlalchemy import insert #for sending WhatsApp
 import pandas as pd
 import json
 import os
@@ -36,7 +36,7 @@ app = Flask(__name__)
 
 #this is the webhook to handle Twilio http 
 @app.route("/", methods=['GET', 'POST'])
-def sms_reply():
+def whatsapp_reply():
     #Get message content:
     # all_content = request.values
     # print("all content is: ", all_content)
