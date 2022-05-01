@@ -5,6 +5,7 @@ import sqlalchemy as db
 # from sqlalchemy import insert
 import pandas as pd
 import json
+import os
 
 #function to save interaction to DB
 def save_interaction(cell_number, message_content):
@@ -68,11 +69,11 @@ def get_messages():
     # print(json_object)
     return(json_object)
 
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    development = os.environ['FLASK_ENV']
+    if development == "development":
+        app.run(debug=True)
+    else:
+        app.run(host='0.0.0.0')
 
 
