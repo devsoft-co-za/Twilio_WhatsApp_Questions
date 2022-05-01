@@ -12,7 +12,7 @@ CTRL+D to exit
 
 
 ###Deployment: 
-Nginx, uwsgi
+Using Ubuntu Server 20.04 with Nginx, uwsgi. 
 
 
 ###Usage: 
