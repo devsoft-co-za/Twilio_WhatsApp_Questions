@@ -8,7 +8,7 @@
 4. Install Ngrok (for local web hook receiving)
 5. SQLite db setup: *-interactions.db already included, setup for reference*
 `sqlite3 interactions.db`
-`CREATE TABLE messages(cell INT, message TEXT)`
+`CREATE TABLE messages(cell INT, message TEXT);`
 CTRL+D to exit
 
 ### Usage: 
@@ -24,7 +24,7 @@ Copy the ngrok url shown in the terminal and insert into Twilio Sandbox Configur
 Run the Flask application:
 `source venv/bin/activate`
 `export FLASK_ENV=development`
-`python app.py`
+`python3 app.py`
 
 Send a WhatsApp message to your Twilio sandbox number
 
