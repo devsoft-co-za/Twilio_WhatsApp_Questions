@@ -17,11 +17,11 @@ Using Ubuntu Server 20.04 with Nginx, uwsgi and systemd.
 ```
 server {
     listen 80;
-    server_name chatbot.devsoft.co.za;
+    server_name <url or ip of server>;
 
     location / {
                 include uwsgi_params;
-                uwsgi_pass unix:/home/tom/Twilio_WhatsApp_Questions/whatsapp_questions.sock;
+                uwsgi_pass unix:/path/to/Twilio_WhatsApp_Questions/whatsapp_questions.sock;
         }
 
 }
@@ -36,9 +36,9 @@ After=network.target
 [Service]
 User=tom
 Group=www-data
-WorkingDirectory=/home/tom/Twilio_WhatsApp_Questions
-Environment="PATH=/home/tom/Twilio_WhatsApp_Questions/venv/bin"
-ExecStart=/home/tom/Twilio_WhatsApp_Questions/venv/bin/uwsgi --ini whatsapp_questions.ini
+WorkingDirectory=/path/to/Twilio_WhatsApp_Questions
+Environment="PATH=/path/to/Twilio_WhatsApp_Questions/venv/bin"
+ExecStart=/path/to/Twilio_WhatsApp_Questions/venv/bin/uwsgi --ini whatsapp_questions.ini
 
 [Install]
 WantedBy=multi-user.target
@@ -49,12 +49,14 @@ WantedBy=multi-user.target
 #### Run Locally: 
 Using Ngrok https://dashboard.ngrok.com/get-started/setup
 
+ngrok binary needs to be installed
 `./ngrok http http://127.0.0.1:5000`
 
-Copy the ngrok url, insert into Twilio Sandbox Configuration ("When a message comes in") link 
+Copy the ngrok url, insert into Twilio Sandbox Configuration ("When a message comes in") link box 
 
 
 Run the Flask application:
+`source venv/bin/activate`
 `export FLASK_ENV=development`
 `python app.py`
 
@@ -66,5 +68,5 @@ Check the resulting database using the api:
 
 
 #### Check the deployed api: 
-`curl --location --request GET 'http://chatbot.devsoft.co.za/get_messages'` *still todo
+`curl --location --request GET 'http://chatbot.devsoft.co.za/get_messages'` 
 
