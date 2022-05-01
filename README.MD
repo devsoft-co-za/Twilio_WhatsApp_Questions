@@ -37,7 +37,7 @@ Description=uWSGI instance to serve whatsapp_questions
 After=network.target
 
 [Service]
-User=tom
+User=username
 Group=www-data
 WorkingDirectory=/path/to/Twilio_WhatsApp_Questions
 Environment="PATH=/path/to/Twilio_WhatsApp_Questions/venv/bin"
