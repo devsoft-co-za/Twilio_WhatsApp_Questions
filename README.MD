@@ -11,11 +11,11 @@
 CTRL+D to exit
 
 
-###Deployment: 
+### Deployment: 
 Using Ubuntu Server 20.04 with Nginx, uwsgi. 
 
 
-###Usage: 
+### Usage: 
 
 #### Run Locally: 
 Using Ngrok [https://dashboard.ngrok.com/get-started/setup]
@@ -28,5 +28,5 @@ Check the resulting database using the api:
 `curl --location --request GET '127.0.0.1:5000/get_messages'`
 
 #### Check the deployed api: 
-`curl --location --request GET 'chatbot.devsoft.co.za/get_messages'` *todo
+`curl --location --request GET 'chatbot.devsoft.co.za/get_messages'` *still todo
 
