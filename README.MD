@@ -32,6 +32,7 @@ Check the resulting database entry using the api:
 
 `curl --location --request GET '127.0.0.1:5000/get_messages'`
 
+#### See the results displayed on a web page at http://chatbot.devsoft.co.za/show_messages
 
 #### Check the already deployed api: 
 `curl --location --request GET 'http://chatbot.devsoft.co.za/get_messages'` 

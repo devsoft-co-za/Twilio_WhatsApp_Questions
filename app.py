@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template, jsonify
 from twilio.twiml.messaging_response import MessagingResponse
 
 import sqlalchemy as db
@@ -75,6 +75,10 @@ def get_messages():
     # print(json_object)
     return(json_object)
 
+@app.route("/show_messages")
+def show_messages():
+    results_formatted = all_messages()      
+    return render_template("index.html", messages=results_formatted)
 
 if __name__ == "__main__":
     development = os.environ['FLASK_ENV']
