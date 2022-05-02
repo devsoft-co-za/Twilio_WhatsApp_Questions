@@ -55,7 +55,7 @@
 <script type="text/JavaScript">
     // Jquery function to redact phone numbers in deployed version
     $(function() {
-        if($(!location).attr('href').includes("127")){
+        if(!$(location).attr('href').includes("127")){
             //redact numbers - replacing last four numbers with "*"
             $('.number-heading').each(function () { 
                 $(this).text($(this).text().slice(0, -4)+"****");
