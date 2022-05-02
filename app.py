@@ -26,12 +26,11 @@ def all_messages():
     messages = db.Table('messages', metadata,
                         autoload=True, autoload_with=engine)
     results = connection.execute(db.select([messages])).fetchall()
-    df2 = pd.DataFrame(results)
-    df2.columns = results[0].keys()
-    df2.head(2)
-
+    df = pd.DataFrame(results)
+    df.columns = results[0].keys()
+    df.head(2)
     # get results in dictionary format cell: [messages]
-    results_formatted = df2.groupby(['cell']).apply(
+    results_formatted = df.groupby(['cell']).apply(
         lambda x: x['message'].tolist()).to_dict()
     # print(results_formatted)
     return(results_formatted)
