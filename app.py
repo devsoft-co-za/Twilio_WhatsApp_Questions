@@ -1,11 +1,11 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template
 from twilio.twiml.messaging_response import MessagingResponse
 
 import sqlalchemy as db
-# from sqlalchemy import insert # - for sending WhatsApp
 import pandas as pd
 import json
 import os
+
 
 # function to save interaction to DB
 def save_interaction(cell_number, message_content):
@@ -17,6 +17,7 @@ def save_interaction(cell_number, message_content):
     statement = messages.insert().values(
         cell=cell_number, message=message_content)
     connection.execute(statement)
+
 
 # function to collate all messages received - returns a dictionary
 def all_messages():
@@ -37,6 +38,7 @@ def all_messages():
 
 
 app = Flask(__name__)
+
 
 # this is the webhook to handle Twilio http
 @app.route("/", methods=['GET', 'POST'])
@@ -64,6 +66,7 @@ def whatsapp_reply():
     # print(str(resp))
     return str(resp)
 
+
 # api route to get messages grouped by cell number in Json format
 @app.route("/get_messages", methods=['GET'])
 def get_messages():
@@ -74,10 +77,12 @@ def get_messages():
     # print(json_object)
     return(json_object)
 
+
 @app.route("/show_messages")
 def show_messages():
-    results_formatted = all_messages()      
+    results_formatted = all_messages()
     return render_template("index.html", messages=results_formatted)
+
 
 if __name__ == "__main__":
     development = os.environ['FLASK_ENV']
