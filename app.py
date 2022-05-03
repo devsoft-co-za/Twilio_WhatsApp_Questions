@@ -49,22 +49,31 @@ def whatsapp_reply():
     body = request.values.get('Body', None)
 
     cell_number = request.values.get('From', None)
-    # cell as a number:
-    cell_short = cell_number.rsplit("+")[1]  # needs checking
-    # print("cell short number: ", cell_short)
-    # save cell and message to db:
-    save_interaction(cell_short, body)
+    # error handling
+    if body != None and cell_number != None:
+        # cell as a number:
+        cell_short = cell_number.rsplit("+")[1]  # needs checking
+        # print("cell short number: ", cell_short)
+        # save cell and message to db:
+        save_interaction(cell_short, body)
 
-    # todo: if already had interaction, change the response below?
-    """Respond to incoming calls with a simple text message."""
-    # Start our TwiML response
-    resp = MessagingResponse()
+        # todo: if already had interaction, change the response below?
+        """Respond to incoming calls with a simple text message."""
+        # Start our TwiML response
+        resp = MessagingResponse()
 
-    # Add a message
-    resp.message(
-        "Thank you for your enquiry. What do you think of this response?")
-    # print(str(resp))
-    return str(resp)
+        # Add a message
+        resp.message(
+            "Thank you for your enquiry. What do you think of this response?")
+        # print(str(resp))
+        return str(resp)
+    else: 
+        resp = MessagingResponse()
+        # Add a message
+        resp.message(
+            "Error in message handling, please contact the developer")
+        # print(str(resp))
+        return str(resp)
 
 
 # api route to get messages grouped by cell number in Json format
